@@ -10,43 +10,57 @@
         html { scroll-behavior: smooth; }
         body { 
             background: radial-gradient(circle at top, #2a0000 0%, #111 45%, #000 100%); 
-            color: #e0e0e0; font-family: 'Georgia', serif; margin: 0; text-align: center; line-height: 1.6;
+            color: #e0e0e0; font-family: 'Georgia', serif; margin: 0; text-align: center; 
+            line-height: 1.6;
         }
         
-        /* Nav */
-        nav { position: sticky; top: 0; background: rgba(0,0,0,0.9); padding: 15px; z-index: 1000; border-bottom: 1px solid var(--burgundy); }
-        nav a { color: white; text-decoration: none; margin: 0 10px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        /* Navbar */
+        .navbar { position: sticky; top: 0; background: rgba(0,0,0,0.9); padding: 15px; z-index: 1000; display: flex; justify-content: center; gap: 20px; border-bottom: 1px solid var(--burgundy); }
+        .navbar a { color: #fff; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
         .hero { 
             padding: 100px 20px; 
-            background: linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)), url("photo3.png") center/cover; 
+            background: linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)), url("background.jpg") center/cover;
         }
-        .hero img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--burgundy); margin-bottom: 20px; }
+        .couple-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid var(--burgundy); margin-bottom: 20px; }
+        h1 { color: var(--burgundy); font-size: 4.5rem; text-shadow: 2px 2px 4px #000; margin: 0 0 10px 0; animation: fadeInDown 1.5s ease; }
+        .hero-date { color: #c9b2b2; font-size: 1.4rem; letter-spacing: 3px; margin-bottom: 15px; animation: fadeIn 2s ease; }
         
-        h1 { color: var(--burgundy); font-size: 4.5rem; text-shadow: 2px 2px 4px #000; margin: 0 0 10px 0; }
-        .hero-date { color: #c9b2b2; font-size: 1.4rem; letter-spacing: 3px; margin-bottom: 25px; }
+        .counter-box { font-size: 1.2rem; margin: 15px; padding: 20px 30px; border: 1px solid var(--burgundy); display: inline-block; background: rgba(139, 0, 0, 0.1); border-radius: 15px; transition: 0.4s; }
         
-        .counter-grid { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
-        .counter-box { font-size: 1rem; padding: 15px; border: 1px solid var(--burgundy); background: rgba(139, 0, 0, 0.1); border-radius: 10px; min-width: 70px; }
-        #countdown { font-size: 1.5rem; color: var(--burgundy); font-weight: bold; display: block; }
+        #countdown-container { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
+        .time-block { display: flex; flex-direction: column; align-items: center; }
+        .time-val { font-size: 1.8rem; color: var(--burgundy); font-weight: bold; }
+        .time-label { font-size: 0.7rem; text-transform: uppercase; }
 
-        .swiper { width: 90%; max-width: 600px; aspect-ratio: 3 / 4; margin: 40px auto; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
-        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; transition: .5s; }
-        .swiper-slide img:hover { transform: scale(1.03); }
+        .swiper { 
+            width: 90%; max-width: 600px; aspect-ratio: 3 / 4; margin: 40px auto; 
+            border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            animation: zoomIn 2s ease;
+        }
+        .swiper img { width: 100%; height: 100%; object-fit: cover; transition: .5s; }
+        .swiper img:hover { transform: scale(1.03); }
 
         .details-container { 
-            padding: 35px; border: 1px solid #333; margin: 40px auto; max-width: 700px; width: 90%; 
-            background: #111; border-radius: 20px; text-align: left; box-shadow: 0 12px 35px rgba(0,0,0,.35);
+            padding: 35px; border-top: 2px solid var(--burgundy); border-bottom: 2px solid var(--burgundy); 
+            margin: 40px auto; max-width: 700px; width: 90%; background: #111; border-radius: 20px; text-align: left;
+            animation: slideUp 1s ease-out; box-shadow: 0 12px 35px rgba(0,0,0,.35);
         }
         
         .button { 
-            background: var(--burgundy); color: white; padding: 20px; text-decoration: none; display: inline-block; 
-            margin: 10px 0; font-weight: bold; border-radius: 50px; transition: 0.4s; text-align: center; cursor: pointer;
+            background: var(--burgundy); color: white; padding: 20px 50px; 
+            text-decoration: none; display: inline-block; margin: 10px; 
+            font-weight: bold; border-radius: 50px; transition: 0.4s; text-align: center; cursor: pointer;
         }
-        .button:hover { background: #a30000; transform: translateY(-5px) scale(1.05); }
+        .button:hover { background: #a30000; transform: translateY(-5px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         .button:active { transform: scale(.98); }
 
-        @media (max-width:768px) {
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        @media (max-width:768px){
             h1 { font-size: 2.8rem; }
             .hero { padding: 70px 20px; }
             .details-container { padding: 25px; }
@@ -56,18 +70,29 @@
 </head>
 <body>
 
-    <nav>
-        <a href="#home">Home</a><a href="#details">Details</a><a href="#registry">Registry</a><a href="#photos">Photos</a>
+    <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#details">Details</a>
+        <a href="#registry">Registry</a>
+        <a href="#photos">Photos</a>
+        <a href="https://forms.gle/mHS7KcxBKwCYyH6N7">RSVP</a>
     </nav>
 
     <header class="hero" id="home">
-        <img src="photo1.png" alt="Joshua and Elise">
+        <img src="couple.jpg" alt="Joshua and Elise" class="couple-photo" loading="lazy">
         <h1>Joshua & Elise</h1>
         <p class="hero-date">November 29, 2026</p>
-        <div class="counter-grid">
-            <div class="counter-box"><span id="countdown">--</span>Days</div>
-            <div class="counter-box"><span id="counter">--</span>Guests</div>
+        <div class="counter-box">Guests Attending: <span id="counter">Loading...</span></div>
+        <div class="counter-box">
+            Wedding Begins In
+            <div id="countdown-container">
+                <div class="time-block"><span id="days" class="time-val">0</span><span class="time-label">Days</span></div>
+                <div class="time-block"><span id="hours" class="time-val">0</span><span class="time-label">Hours</span></div>
+                <div class="time-block"><span id="minutes" class="time-val">0</span><span class="time-label">Minutes</span></div>
+                <div class="time-block"><span id="seconds" class="time-val">0</span><span class="time-label">Seconds</span></div>
+            </div>
         </div>
+        <br>
         <a href="https://forms.gle/mHS7KcxBKwCYyH6N7" class="button">RSVP NOW</a>
     </header>
 
@@ -75,6 +100,9 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="photo1.png" loading="lazy" alt="Photo 1"></div>
             <div class="swiper-slide"><img src="photo2.png" loading="lazy" alt="Photo 2"></div>
+            <div class="swiper-slide"><img src="photo3.png" loading="lazy" alt="Photo 3"></div>
+            <div class="swiper-slide"><img src="photo4.png" loading="lazy" alt="Photo 4"></div>
+            <div class="swiper-slide"><img src="photo5.png" loading="lazy" alt="Photo 5"></div>
         </div>
         <div class="swiper-pagination"></div>
     </div>
@@ -87,35 +115,59 @@
         <p><strong>Attire:</strong> Business Casual or Dressy Casual. We kindly ask guests to avoid neon colors and instead choose darker or neutral tones that complement our black, gold, and burgundy wedding palette.</p>
     </section>
 
+    <section class="details-container">
+        <h2>Wedding Tips</h2>
+        <p><strong>BYOB:</strong> We'll have plenty of refreshments, but feel free to bring your own favorite beer or beverage of choice.</p>
+        <p><strong>Photos:</strong> We love photos! There will be a QR code at every table. Please scan it to upload any pictures or videos you take during the event</p>
+        <p><strong>Parking:</strong> Plenty of parking is available.</p>
+        <p><strong>Note:</strong> The wedding will be held outdoors, so please dress comfortably according to the weather.</p>
+    </section>
+
     <section class="details-container" id="registry">
         <h2>Gifts & Registry</h2>
         <p>Your presence is the only gift we need. If you wish to honor us, we have a registry and a honeymoon fund available.</p>
-        <a href="https://www.amazon.com/wedding/guest-view/212790SXRAFMD" class="button" style="background: #232f3e; width: 100%;">Amazon Registry</a>
+        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+            <a href="https://www.amazon.com/wedding/guest-view/212790SXRAFMD" target="_blank" class="button" style="background: #232f3e;">Amazon Registry</a>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <a href="https://venmo.com/u/Elise-autrey" target="_blank" class="button" style="background: #008CFF; font-size: 0.8rem; margin: 0;">Venmo<br>@Elise-autrey</a>
+                <a href="https://cash.app/$EliseAutrey" target="_blank" class="button" style="background: #00c244; font-size: 0.8rem; margin: 0;">CashApp<br>$EliseAutrey</a>
+            </div>
+        </div>
     </section>
 
-    <footer style="padding:50px; color:#666;">
-        <p>Made with ❤️<br>Joshua & Elise | November 29, 2026</p>
+    <footer style="padding:50px;color:#999;">
+        <p>Made with ❤️<br>Joshua & Elise<br>November 29, 2026</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         const swiper = new Swiper('.swiper', { 
-            loop: true, autoplay: { delay: 3000 }, 
-            pagination: { el: '.swiper-pagination', clickable: true } 
+            loop: true, 
+            autoplay: { delay: 3000 },
+            pagination: { el: '.swiper-pagination', clickable: true }
         });
-
-        // Use a specific column index for your RSVP "Yes" values to ensure accuracy
-        fetch('YOUR_CSV_URL_HERE')
+        
+        fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRJW3X-qPJVCHRSdm4ttODJ1k-wwwIY-HzmBBxtGk89h3dLYz_cxeUwzJN5vwFpur6hz0uYWIQlisCt/pub?output=csv')
             .then(res => res.text()).then(data => { 
-                const rows = data.split('\n');
-                const count = rows.filter(r => r.includes('Yes')).length; 
-                document.getElementById('counter').innerText = count; 
+                document.getElementById('counter').innerText = data.split('\n').filter(r => r.toLowerCase().includes('yes')).length; 
             });
 
         function updateCountdown() {
-            const dist = new Date("November 29, 2026 16:00:00").getTime() - new Date().getTime();
-            document.getElementById("countdown").innerHTML = Math.floor(dist / (1000*60*60*24));
+            const now = new Date().getTime();
+            const countDate = new Date("November 29, 2026 16:00:00").getTime();
+            const diff = countDate - now;
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d;
+            document.getElementById("hours").innerText = h;
+            document.getElementById("minutes").innerText = m;
+            document.getElementById("seconds").innerText = s;
         }
+        setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>
 </body>
