@@ -4,67 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joshua & Elise | Wedding</title>
+    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <style>
-        :root { --black: #000000; --burgundy: #8B0000; --dark-grey: #5A5A5A; --light-grey: #9FA4A1; }
-        body { background-color: var(--black); color: #fff; font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; }
+        :root { --black: #000000; --burgundy: #8B0000; --dark-grey: #5A5A5A; }
+        body { background-color: var(--black); color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
         
-        .hero { padding: 60px 20px; animation: fadeIn 2s; }
-        h1 { color: var(--burgundy); font-size: 3rem; margin-bottom: 10px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .hero { text-align: center; padding: 50px 0; }
+        h1 { color: var(--burgundy); font-size: 3rem; margin-bottom: 20px; }
         
-        .counter-box { font-size: 1.5rem; margin: 20px; padding: 20px; border: 2px solid var(--burgundy); display: inline-block; background: rgba(139, 0, 0, 0.1); }
+        .counter-box { font-size: 1.5rem; padding: 20px; border: 2px solid var(--burgundy); display: inline-block; background: rgba(139, 0, 0, 0.1); }
         #counter { color: var(--burgundy); font-weight: bold; }
 
-        .swiper { width: 100%; max-width: 800px; height: 500px; margin: 30px auto; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        /* Carousel sizing */
+        .swiper { width: 100%; height: 400px; margin: 40px 0; border-radius: 15px; }
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
 
-        .card-container { display: flex; justify-content: center; gap: 30px; padding: 50px; flex-wrap: wrap; }
+        /* Cards layout */
+        .card-container { display: flex; justify-content: center; padding: 40px 0; }
         .flip-card { width: 300px; height: 200px; perspective: 1000px; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; }
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; padding: 20px; border: 2px solid var(--burgundy); border-radius: 10px; }
         .flip-card-front { background-color: var(--dark-grey); }
         .flip-card-back { background-color: var(--burgundy); transform: rotateY(180deg); }
 
-        .button { background-color: var(--burgundy); color: white; padding: 20px 40px; text-decoration: none; display: inline-block; margin: 40px; font-weight: bold; border-radius: 5px; transition: 0.3s; }
-        .button:hover { transform: scale(1.1); background-color: #a50000; }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .rsvp-section { text-align: center; padding: 50px 0; }
+        .button { background-color: var(--burgundy); color: white; padding: 20px 40px; text-decoration: none; display: inline-block; font-weight: bold; border-radius: 5px; transition: 0.3s; }
+        .button:hover { background-color: #a50000; transform: scale(1.05); }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <h1>Joshua Mansfield & Elise Autrey</h1>
-        <div class="counter-box">
-            Guests Attending: <span id="counter">Loading...</span>
-        </div>
-    </header>
+    <div class="container">
+        <header class="hero">
+            <h1>Joshua Mansfield & Elise Autrey</h1>
+            <div class="counter-box">
+                Guests Attending: <span id="counter">Loading...</span>
+            </div>
+        </header>
 
-    <div class="swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="photo1.png" alt="Photo 1"></div>
-            <div class="swiper-slide"><img src="photo2.png" alt="Photo 2"></div>
-            <div class="swiper-slide"><img src="photo3.png" alt="Photo 3"></div>
-            <div class="swiper-slide"><img src="photo4.png" alt="Photo 4"></div>
-            <div class="swiper-slide"><img src="photo5.png" alt="Photo 5"></div>
-        </div>
-    </div>
-
-    <div class="card-container">
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front"><h3>Dress Code</h3></div>
-                <div class="flip-card-back"><p>Formal attire required. Our colors: Burgundy, Black, and Grey.</p></div>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="photo1.png" alt="Joshua and Elise"></div>
+                <div class="swiper-slide"><img src="photo2.png" alt="Joshua and Elise"></div>
+                <div class="swiper-slide"><img src="photo3.png" alt="Joshua and Elise"></div>
+                <div class="swiper-slide"><img src="photo4.png" alt="Joshua and Elise"></div>
+                <div class="swiper-slide"><img src="photo5.png" alt="Joshua and Elise"></div>
             </div>
         </div>
-    </div>
 
-    <a href="https://forms.gle/mHS7KcxBKwCYyH6N7" class="button">RSVP NOW</a>
+        <div class="card-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><h3>Dress Code</h3></div>
+                    <div class="flip-card-back"><p>Formal attire required. Colors: Burgundy, Black, and Grey.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <section class="rsvp-section">
+            <a href="https://forms.gle/mHS7KcxBKwCYyH6N7" class="button">RSVP NOW</a>
+        </section>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        const swiper = new Swiper('.swiper', { loop: true, autoplay: { delay: 2500 } });
+        const swiper = new Swiper('.swiper', { loop: true, autoplay: { delay: 3000 } });
         
         fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRJW3X-qPJVCHRSdm4ttODJ1k-wwwIY-HzmBBxtGk89h3dLYz_cxeUwzJN5vwFpur6hz0uYWIQlisCt/pub?output=csv')
             .then(response => response.text())
