@@ -55,6 +55,8 @@
         .button:hover { background: #a30000; transform: translateY(-5px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         .button:active { transform: scale(.98); }
 
+        .rsvp-note { font-size: 0.85rem; color: #aaa; margin-top: 15px; font-style: italic; }
+
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
@@ -94,6 +96,7 @@
         </div>
         <br>
         <a href="https://forms.gle/mHS7KcxBKwCYyH6N7" class="button">CLICK TO RSVP NOW</a>
+        <p class="rsvp-note">If you are unable to use Google Forms, please text (225)394-1963 with the words "Wedding Info" and we will help you.</p>
     </header>
 
     <div class="swiper" id="photos">
@@ -119,7 +122,7 @@
         <h2>Wedding Tips</h2>
         <p><strong>BYOB:</strong> We'll have plenty of refreshments, but feel free to bring your own favorite beer or beverage of choice.</p>
         <p><strong>Shots:</strong> The Bride and Groom would like to take a shot with everyone after the "I Do's".</p>
-        <p><strong>Photos:</strong> We love photos! There will be a QR codes scattered everywhere. Please scan it to upload any pictures or videos you take during the event</p>
+        <p><strong>Photos:</strong> We love photos! There will be a QR code scattered everywhere. Please scan it to upload any pictures or videos you take during the event.</p>
         <p><strong>Parking:</strong> Plenty of parking is available.</p>
         <p><strong>Note:</strong> The wedding will be held outdoors, so please dress comfortably according to the weather.</p>
     </section>
@@ -153,14 +156,9 @@
             .then(data => { 
                 const rows = data.split('\n');
                 let totalGuests = 0;
-
-                // Start at i=1 to skip the header row
                 for (let i = 1; i < rows.length; i++) {
                     const columns = rows[i].split(',');
-                    
-                    // Column E (index 4) check for "Joyfully Accepts"
                     if (columns[4] && columns[4].toLowerCase().includes('joyfully accepts')) {
-                        // Add Column F (index 5) to the total
                         const partySize = parseInt(columns[5]) || 0; 
                         totalGuests += partySize;
                     }
