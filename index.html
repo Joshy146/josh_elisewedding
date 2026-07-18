@@ -148,8 +148,23 @@
         });
         
         fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRJW3X-qPJVCHRSdm4ttODJ1k-wwwIY-HzmBBxtGk89h3dLYz_cxeUwzJN5vwFpur6hz0uYWIQlisCt/pub?output=csv')
-            .then(res => res.text()).then(data => { 
-                document.getElementById('counter').innerText = data.split('\n').filter(r => r.toLowerCase().includes('yes')).length; 
+            .then(res => res.text())
+            .then(data => { 
+                const rows = data.split('\n');
+                let totalGuests = 0;
+
+                // Start at i=1 to skip the header row
+                for (let i = 1; i < rows.length; i++) {
+                    const columns = rows[i].split(',');
+                    
+                    // Column E (index 4) check for "Joyfully Accepts"
+                    if (columns[4] && columns[4].toLowerCase().includes('joyfully accepts')) {
+                        // Add Column F (index 5) to the total
+                        const partySize = parseInt(columns[5]) || 0; 
+                        totalGuests += partySize;
+                    }
+                }
+                document.getElementById('counter').innerText = totalGuests;
             });
 
         function updateCountdown() {
